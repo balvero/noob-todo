@@ -1,0 +1,10 @@
+<div class="container">
+  <% @items.each do |item| %>
+    <h2><%= link_to item.title, item %></h2>
+      <div class="item-description">
+        <%= item.description %>
+      </div>
+      <hr />
+  <% end %>
+  <%=  link_to 'New Item', new_item_path, class: 'btn btn-info' %>
+</div>
