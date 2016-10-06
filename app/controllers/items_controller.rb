@@ -1,8 +1,11 @@
 class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
-    @items = Item.all.order("created_at DESC")
+    if user_signed_in?
+      @items = Item.where(:user_id => current_user).order("created_at DESC")
+    end
   end
 
   def show
@@ -47,7 +50,12 @@ class ItemsController < ApplicationController
   end
 
   def find_item
-    @item = Item.find(params[:id])
+    begin
+      @item = current_user.items.find(params[:id])
+    rescue
+      redirect_to root_path, :alert => 'You can only View/Edit Tasks that belongs to you.'
+    end
   end
+
 
 end

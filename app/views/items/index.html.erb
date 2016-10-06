@@ -1,9 +1,14 @@
-<div class="container">
-  <% @items.each do |item| %>
-    <h2><%= link_to item.title, item %></h2>
-      <div class="item-description">
-        <%= item.description %>
+
+  <% if user_signed_in? %>
+      <div class="container">
+        <% @items.each do |item| %>
+          <h2><%= link_to item.title, item %></h2>
+            <div class="item-description">
+              <%= item.description %>
+            </div>
+            <hr />
+        <% end %>
       </div>
-      <hr />
+      <% else %>
+    <%= render 'welcome_page' %>
   <% end %>
-</div>
