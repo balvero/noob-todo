@@ -2,11 +2,42 @@
   <% if user_signed_in? %>
       <div class="container">
         <% @items.each do |item| %>
-          <h2><%= link_to item.title, item %></h2>
-            <div class="item-description">
-              <%= item.description %>
-            </div>
-            <hr />
+            <% if item.completed? %>
+              <div class="item completed">
+                <p class="complete">Completed <%= time_ago_in_words(item.completed_at) %> ago</p> <%= link_to item, method: :delete, data: { confirm: 'Are you sure?'} do %>
+                    <i class="fa fa-trash fa-lg delete"></i>
+                <% end %>
+
+                <h2><%= link_to item.title, item %></h2>
+                <div class="item-description">
+                  <%= item.description %>
+                </div>
+              </div>
+              <hr />
+
+            <% else %>
+
+                <div class="item">
+                  <h2><%= link_to item.title, item %></h2>
+                  <p class="created">Created <%= time_ago_in_words(item.created_at) %> ago</p>
+                  <div class="item-description">
+                    <%= item.description %>
+                  </div>
+                  <div class="controls">
+                    <%= link_to complete_item_path(item), method: :patch do %>
+                        <i class="fa fa-check fa-lg complete"></i>
+                    <% end %>
+                    <%= link_to item, method: :delete, data: { confirm: 'Are you sure?'} do %>
+                        <i class="fa fa-trash fa-lg delete"></i>
+                    <% end %>
+
+                  </div>
+                </div>
+                <hr />
+
+            <% end %>
+
+
         <% end %>
       </div>
       <% else %>

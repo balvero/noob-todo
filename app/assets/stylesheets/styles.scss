@@ -2,6 +2,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// import fonts
+@import 'https://fonts.googleapis.com/css?family=Nunito';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600';
+
 // make all images responsive by default
 img {
   @extend .img-responsive;
@@ -38,21 +42,103 @@ main {
   width: 100%;
   padding: 0;
   margin-top: 51px; // accommodate the navbar
+  font-family: 'Open Sans', sans-serif;
   }
 section {
   @extend .row;
   margin-top: 20px;
   }
 
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Nunito', sans-serif;
+}
 
+a {
+  color: #e74c3c;
+}
+
+a:hover {
+  text-decoration: none;
+}
 .page-nav {
   margin-top: 30px;
 }
 
+main {
+  padding-bottom: 30px;
+  background-color: #ecf0f1;
+}
+
 
 footer#footer {
-  margin-top: 30px;
   padding: 45px 0;
   background-color: #525252;
   color: #fff;
+}
+
+.controls {
+  margin-top: 15px;
+  background-color: #fafafa;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  i {
+    padding: 10px;
+  }
+
+  i:hover {
+    opacity: 0.5;
+  }
+}
+
+i.delete {
+  color: #e74c3c !important;
+  margin-right: 2px;
+}
+
+i.complete {
+  color: #2ecc71;
+  border-right: 1px solid #ccc;
+}
+
+.item.completed {
+  color: #ccc !important;
+  background-color: #fafafa;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 5px;
+
+  h2 {
+    text-decoration: line-through;
+  }
+
+  a {
+    color: #ccc;
+    font-style: italic;
+  }
+
+  p.complete {
+    color: #fff;
+    background-color: #1abc9c;
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 15px 0 0 0;
+    border-radius: 5px;
+    box-shadow: -3px -3px 0px rgba(0,0,0,0.1) inset;
+  }
+
+
+}
+
+p.created {
+  background-color: #f6f6f6;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: -3px -3px 0px rgba(0,0,0,0.1) inset;
+}
+
+hr {
+  border-top: 1px solid #f6f6f6;
 }
